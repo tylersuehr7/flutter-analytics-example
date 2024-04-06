@@ -1,6 +1,6 @@
-# analytics_flutter_example
+# Flutter Analytics Example
 
-An example of an in-app built analytics engine.
+An example of an in-app built analytics engine for Flutter app.
 
 ## Getting Started
 
@@ -14,3 +14,8 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Author
+- Tyler Suehr
+
+> Copyright © 2024 Tyler R. Suehr
