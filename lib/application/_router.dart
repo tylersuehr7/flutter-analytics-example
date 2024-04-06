@@ -8,8 +8,13 @@ final GoRouter router = GoRouter(
   debugLogDiagnostics: true,
   routes: <RouteBase>[
     GoRoute(
-      name: FirstScreen.screenName,
+      name: BootScreen.screenName,
       path: "/",
+      builder: (context, state) => const BootScreen(),
+    ),
+    GoRoute(
+      name: FirstScreen.screenName,
+      path: "/first",
       builder: (context, state) => const FirstScreen(),
     ),
     GoRoute(

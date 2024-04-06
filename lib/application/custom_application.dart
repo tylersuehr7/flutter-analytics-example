@@ -1,3 +1,4 @@
+import 'package:analytics_flutter_example/presentation/screens/boot_screen/boot_screen.dart';
 import 'package:analytics_flutter_example/presentation/screens/first_screen/first_screen.dart';
 import 'package:analytics_flutter_example/presentation/screens/second_screen/second_screen.dart';
 import 'package:analytics_flutter_example/presentation/screens/third_screen/thrid_screen.dart';
