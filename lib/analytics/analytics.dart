@@ -12,6 +12,8 @@ final class Analytics {
   ///
   /// [event] the analytics event to be captured
   static void capture(final AnalyticsEvent event) async {
+    final IAnalyticsEngine engine = await _getLoadedEngine();
+    engine.submit(event);
   }
 
   static IAnalyticsEngine? _engine;
