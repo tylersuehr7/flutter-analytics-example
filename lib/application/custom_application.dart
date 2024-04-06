@@ -22,4 +22,7 @@ final class CustomApplication extends StatelessWidget {
       builder: (final BuildContext context, final Widget? child) => child!,
     );
   }
+
+  /// Runs this Flutter application.
+  static void run() => runApp(const CustomApplication());
 }
