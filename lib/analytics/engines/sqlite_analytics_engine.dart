@@ -7,6 +7,8 @@ import '../analytics.dart';
 
 class SqliteAnalyticsEngine implements IAnalyticsEngine {
   Database? _database;
+  bool _isProcessing = false;
+  final List<AnalyticsEvent> _eventsQueue = [];
 
   @override
   Future<void> initialize() async {
@@ -21,12 +23,35 @@ class SqliteAnalyticsEngine implements IAnalyticsEngine {
   }
 
   @override
-  void submit(AnalyticsEvent event) async {
-    await _AllAnalyticsTable(
-      created: DateTime.now(),
-      eventName: event.eventName,
-      eventPayload: event.properties,
-    ).insert(_database!);
+  void submit(AnalyticsEvent event) {
+    _eventsQueue.add(event);
+
+    if (_isProcessing) {
+      return;
+    }
+
+    _isProcessing = true;
+
+    try {
+      _processAllQueuedEvents();
+    } finally {
+      _isProcessing = false;
+    }
+  }
+
+  Future<void> _processAllQueuedEvents() async {
+    final Batch batch = _database!.batch();
+
+    while (_eventsQueue.isNotEmpty) {
+      final AnalyticsEvent event = _eventsQueue.removeLast();
+      batch.insert(_AllAnalyticsTable.tableName, {
+        _AllAnalyticsTable.columnCreated: DateTime.now().toIso8601String(),
+        _AllAnalyticsTable.columnEventName: event.eventName,
+        _AllAnalyticsTable.columnEventPayload: jsonEncode(event.properties),
+      });
+    }
+
+    await batch.apply(continueOnError: true);
   }
 
   static Future<void> _onCreateDatabase(final Database db, final int version) async {
@@ -49,15 +74,6 @@ final class _AllAnalyticsTable {
     required this.eventName,
     required this.eventPayload,
   });
-
-  Future<int> insert(final Database db) {
-    final String encodedPayload = jsonEncode(eventPayload);
-    return db.insert(tableName, {
-      columnCreated: created.toIso8601String(),
-      columnEventName: eventName,
-      columnEventPayload: encodedPayload,
-    });
-  }
 
   static const String tableName = "all_analytics";
   static const String columnCreated = "created";
