@@ -11,6 +11,9 @@ class FirstScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("First Screen"),
       ),
+      body: const Center(
+        child: Text("Content")
+      ),
     );
   }
 }

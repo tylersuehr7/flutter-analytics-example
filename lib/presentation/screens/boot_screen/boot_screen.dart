@@ -1,3 +1,4 @@
+import 'package:analytics_flutter_example/presentation/components/navigation_buttons.dart';
 import 'package:flutter/material.dart';
 
 class BootScreen extends StatelessWidget {
@@ -10,6 +11,9 @@ class BootScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Boot Screen"),
+      ),
+      body: const Center(
+        child: NavigationButtons(),
       ),
     );
   }

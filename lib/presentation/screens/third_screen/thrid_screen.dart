@@ -11,6 +11,9 @@ class ThirdScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Third Screen"),
       ),
+      body: const Center(
+        child: Text("Content")
+      ),
     );
   }
 }
