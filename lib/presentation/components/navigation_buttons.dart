@@ -2,7 +2,7 @@ import 'package:analytics_flutter_example/analytics/analytics.dart';
 import 'package:analytics_flutter_example/analytics/events/button_clicked_event.dart';
 import 'package:analytics_flutter_example/presentation/screens/first_screen/first_screen.dart';
 import 'package:analytics_flutter_example/presentation/screens/second_screen/second_screen.dart';
-import 'package:analytics_flutter_example/presentation/screens/third_screen/thrid_screen.dart';
+import 'package:analytics_flutter_example/presentation/screens/third_screen/third_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
