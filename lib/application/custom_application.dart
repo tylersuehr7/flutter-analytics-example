@@ -1,3 +1,5 @@
+import 'package:analytics_flutter_example/analytics/analytics.dart';
+import 'package:analytics_flutter_example/analytics/events/screen_viewed_event.dart';
 import 'package:analytics_flutter_example/presentation/screens/boot_screen/boot_screen.dart';
 import 'package:analytics_flutter_example/presentation/screens/first_screen/first_screen.dart';
 import 'package:analytics_flutter_example/presentation/screens/second_screen/second_screen.dart';
@@ -6,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 part '_router.dart';
+part '_router_observer.dart';
 
 final class CustomApplication extends StatelessWidget {
   const CustomApplication({super.key});

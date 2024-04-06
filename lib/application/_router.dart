@@ -6,6 +6,7 @@ final GoRouter router = GoRouter(
   initialLocation: "/",
   navigatorKey: _rootNavigatorKey,
   debugLogDiagnostics: true,
+  observers: [_RouterObserver()],
   routes: <RouteBase>[
     GoRoute(
       name: BootScreen.screenName,
